@@ -16,18 +16,18 @@ function generatePassword() {
     //ask the user to choose a password length between 1 and 128 characters
     var passwordLength = Number(window.prompt("Please choose the length of your password between 8 and 128 characters"));
 
-    // if the password is not between 8 and 128 characters, alert user that their option is invalid
+    // if the password is not between 8 and 128 characters, alert user that their option is invalid and take them back to the start
 
     if (passwordLength < 8 || passwordLength > 128) {
         alert("Invalid input. You must choose between 8 and 128 characters.");
         generatePassword();
 
-    } else {
-
-        //move on to next criteria prompt
-
-        let upper = window.confirm("Would you like to include uppercase characters?");
     }
+
+    //move on to next criteria prompt
+
+    let upper = window.confirm("Would you like to include uppercase characters?");
+
 
     //lower case prompt
 
@@ -41,27 +41,28 @@ function generatePassword() {
 
     let special = window.confirm("Would you like to include special characters?");
 
+    //depending on what options the user has selected as true, add/concat those character arrays into a string.
+
+
     if
         (upper === true)
         passwordChars = upperCaseLetters.concat(passwordChars);
 
     (lower === true)
-    passwordChars = 
+    passwordChars = lowerCaseLetters.concat(passwordChars);
+
+    (numbers === true)
+    passwordChars = numbs.concat(passwordChars);
+
+    (special === true)
+    passwordChars = specialChars.concat(PasswordChars);
 
 
-
-
-    
-
+    //generate our random password based on the password length that the user has chosen and select randomly from the passwordChars string
 
     for (var i = 0; i < passwordLength; i++); {
-        writePassword(upperLowerNumbsSpecial.indexOf(Math.random() * passwordLength));
+        writePassword(passwordChars.indexOf(Math.random() * passwordLength));
     }
-
-
-    //ask user to choose the password length
-
-
 
 
 
