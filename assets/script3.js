@@ -1,6 +1,8 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+//defining vars for password characters
+
 var upperCaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
 var lowerCaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -9,8 +11,13 @@ var numbs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0,];
 
 var specialChars = ["!", "@", "#", "$", "$", "%", "^", "&", "*", "?", "~"];
 
-let passwordChars = [];
+//defining lets for password criteria
 
+let upper = "";
+let lower = "";
+let numbers = "";
+let special = "";
+let passwordChars = [];
 
 
 // let passwordLength = [];
@@ -18,9 +25,8 @@ let passwordChars = [];
 
 function generatePassword() {
 
-    var password = "";
 
-    var passwordLength = "";
+    var passwordLength = [];
 
     //ask the user to choose a password length between 1 and 128 characters
 
@@ -28,18 +34,17 @@ function generatePassword() {
 
     // if the password is not between 8 and 128 characters, alert user that their option is invalid and take them back to the start
 
-    if (passwordLength < 8 || passwordLength > 128) {
+    if (passwordLength < 8 || passwordLength > 128 || passwordLength != passwordLength) {
         alert("Invalid input. You must choose between 8 and 128 characters.");
         return generatePassword();
-
     }
 
-    //move on to next criteria prompt
+    //uppercase prompt
 
     let upper = window.confirm("Would you like to include uppercase characters?");
 
 
-    //lower case prompt
+    //lowercase prompt
 
     let lower = window.confirm("Would you like to include lowercase characters?");
 
@@ -51,7 +56,7 @@ function generatePassword() {
 
     let special = window.confirm("Would you like to include special characters?");
 
-    //depending on what options the user has selected as true, add/concat those character arrays into a string.
+    //depending on what options the user has selected as true, concat those character arrays into another array.
 
     if
         (upper === true)
@@ -69,7 +74,7 @@ function generatePassword() {
 
     //generate our password based on the password length that the user has chosen and select randomly from the passwordChars string
 
-    // var password = "";
+    var password = [];
 
     for (var i = 0; i < passwordLength; i++); {
         password += passwordChars[Math.floor(Math.random() * passwordLength.length)];
