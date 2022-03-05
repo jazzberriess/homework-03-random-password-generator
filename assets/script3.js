@@ -26,13 +26,14 @@ let passwordChars = [];
 function generatePassword() {
 
 
+
     var passwordLength = [];
 
     //ask the user to choose a password length between 1 and 128 characters
 
     var passwordLength = parseInt(prompt("Please choose the length of your password between 8 and 128 characters"));
 
-    // if the password is not between 8 and 128 characters, alert user that their option is invalid and take them back to the start
+    // if the password is not between 8 and 128 characters, or is not a numeric value, alert user that their option is invalid and take them back to the start
 
     if (passwordLength < 8 || passwordLength > 128 || passwordLength != passwordLength) {
         alert("Invalid input. You must choose between 8 and 128 characters.");
@@ -56,28 +57,37 @@ function generatePassword() {
 
     let special = window.confirm("Would you like to include special characters?");
 
+    if (upper && lower && numbers && special === false) {
+        alert("Please choose at least ONE (1) of the criteria: uppercase, lowercase, numbers and/or special characters");
+
+        return generatePassword();
+    }
+
     //depending on what options the user has selected as true, concat those character arrays into another array.
+    //Big thank you to Italy S for posting a similar solution on stackoverflow. I was stuck for hours on this: https://stackoverflow.com/questions/69851109/js-password-generator-character-length-not-working
 
     if
         (upper === true)
-        passwordChars = upperCaseLetters.concat(passwordChars);
+        passwordChars = passwordChars.concat(upperCaseLetters);
 
     (lower === true)
-    passwordChars = lowerCaseLetters.concat(passwordChars);
+    passwordChars = passwordChars.concat(lowerCaseLetters);
 
     (numbers === true)
-    passwordChars = numbs.concat(passwordChars);
+    passwordChars = passwordChars.concat(numbs);
 
     (special === true)
-    passwordChars = specialChars.concat(passwordChars);
+    passwordChars = passwordChars.concat(specialChars);
 
 
     //generate our password based on the password length that the user has chosen and select randomly from the passwordChars string
 
-    var password = [];
 
+    var password = "";
     for (var i = 0; i < passwordLength; i++); {
-        password += passwordChars[Math.floor(Math.random() * passwordLength.length)];
+
+        password += passwordChars[Math.floor(Math.random() * passwordChars.length)];
+
     }
 
     return (password);
