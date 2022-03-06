@@ -18,9 +18,16 @@ var upper = "";
 var lower = "";
 var numbers = "";
 var special = "";
+var password = "";
+var createAnother = "";
+var passwordText = "";
+var passwordCharacters = [];
+
 
 
 function generatePassword() {
+
+    //ensure text area is clear before generating password
 
 
     //ask the user to choose a password length between 1 and 128 characters
@@ -70,7 +77,6 @@ function generatePassword() {
     //depending on what options the user has selected as true, concat those character arrays into another array.
     //Big thank you to Italy S for posting a similar solution on stackoverflow. I was stuck for hours on this: https://stackoverflow.com/questions/69851109/js-password-generator-character-length-not-working
 
-    var passwordCharacters = [];
 
     if (upper === true)
         passwordCharacters = passwordCharacters.concat(upperCaseLetters);
@@ -86,91 +92,99 @@ function generatePassword() {
 
 
     console.log(passwordCharacters);
+}
+
+//generate a password based on the password length that the user has chosen and select randomly from the passwordCharacters array
+
+//THIS WAY ISN'T AS SECURE BUT IT WORKS
+
+// var password = "";
+
+// for (var i = 0; i < passwordLength; i++) {
+
+//     password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+// }
+// //if the password result does not include any of the required categories, generate another.
+
+// if (!password.includes(numbs) && !password.includes(specialChars) && !password.includes(upper) && !password.includes(lower)) {
+
+//     for (var i = 0; i < passwordLength.length; i++)
+//         password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+
+//     return password;
+// }
+
+// }
 
 
-    //generate a password based on the password length that the user has chosen and select randomly from the passwordCharacters array
-
-    //THIS WAY ISN'T AS SECURE BUT IT WORKS
-
-    //     var password = "";
-
-    //     for (var i = 0; i < passwordLength; i++) {
-
-    //         password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
-    //     }
-    //     //if the password result does not include any of the required categories, generate another.
-
-    //     if (!password.includes(numbs) || !password.includes(specialChars) || !password.includes(upper) || !password.includes(lower)) {
-
-    //         for (var i = 0; i < passwordLength.length; i++)
-    //             password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
-
-    //     }
-    //     return (password);
-    // }
-
-    //CAN PROBABLY DELETE THIS.
 
 
-    // if (password != numbs || password != specialChars || password != upper || password != lower); {
 
-    //     for (var i = 0; i < passwordLength; i++) {
 
-    //         password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+//CAN PROBABLY DELETE THIS.
 
-    //         console.log(passwordLength);
 
-    //     }
+// if (password != numbs || password != specialChars || password != upper || password != lower); {
+
+//     for (var i = 0; i < passwordLength; i++) {
+
+//         password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+
+//         console.log(passwordLength);
+
+//     }
+// return (password);
+// }
+// }
+
+
+//     console.log(passwordLength);
+// }
+
+// return (password);
+
+
+
+
+
+//TRYING TO MAKE IT MORE SECURE
+
+// var password = "";
+
+for (var i = passwordCharacters.length - 1; i > 0; i--) {
+    var password = Math.floor(Math.random() * (i + 1));
+    var temp = passwordLength[i];
+    passwordLength[i] = passwordCharacters[password];
+    passwordCharacters[password] = temp;
+
+
+
+    password += passwordCharacters[index];
+
+    console.log(password);
+
     // return (password);
-    // }
-    // }
+
+}
+
+// }
+
+// return (password);
+// }
 
 
-    //     console.log(passwordLength);
-    // }
+// Write password to the #password input
+function writePassword() {
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
 
-    // return (password);
+    passwordText.value = password;
 
-    //TRYING TO MAKE IT MORE SECURE
-
-    // var password = "";
-
-    // for (var i = passwordCharacters.length - 1; i > 0; i--) {
-    //     var index = Math.floor(Math.random() * (i + 1));
-    //     var temp = passwordCharacters[i];
-    //     passwordCharacters[i] = passwordCharacters[index];
-    //     passwordCharacters[index] = temp;
-
-    //     password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)]
-
-    //     console.log(password);
-    //     }
-
-    //     return (password);
+}
 
 
-
-    // }
-
-    // console.log(passwordCharacters);
-
-    // return (password);
-
-
-
-
-    // Write password to the #password input
-    function writePassword() {
-        var password = generatePassword();
-        var passwordText = document.querySelector("#password");
-
-        passwordText.value = password;
-
-    }
-
-
-    // Add event listener to generate button
-    generateBtn.addEventListener("click", writePassword);
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
 
 
