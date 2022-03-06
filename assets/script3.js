@@ -7,9 +7,9 @@ var upperCaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "
 
 var lowerCaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-var numbs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0,];
+var numbs = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
-var specialChars = ["!", "@", "#", "$", "$", "%", "^", "&", "*", "?", "~"];
+var specialChars = ["!", "@", "#", "$", "$", "%", "^", "&", "*", "?", "~", ">", "<", ".", "/"];
 
 //defining vars for password criteria
 
@@ -89,19 +89,40 @@ function generatePassword() {
 
     //generate a password based on the password length that the user has chosen and select randomly from the passwordCharacters array
 
+    //THIS WAY ISN'T AS SECURE BUT IT WORKS
 
-    var password = "";
+    // var password = "";
 
-    for (var i = 0; i < passwordLength; i++) {
+    // for (var i = 0; i < passwordLength; i++) {
 
-        password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+    //     password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
 
-        console.log(passwordLength);
-    }
+
+    //     console.log(passwordLength);
+    // }
+
+    // return (password);
+
+    //TRYING TO MAKE IT MORE SECURE
+
+    // var shuffledPassword = new Uint32Array(passwordCharacters.length);
+    // window.crypto.getRandomValues(shuffledPassword);
+
+    // console.log("Here are the numbers");
+
+    // var password = "";
+
+    // for (var i = 0; i < passwordLength; i++) {
+
+    //     password += passwordCharacters[shuffledPassword[i] * passwordCharacters.length];
+
+    //     console.log(passwordCharacters);
+    // }
 
     return (password);
 
 }
+
 
 // Write password to the #password input
 function writePassword() {
@@ -113,7 +134,8 @@ function writePassword() {
 }
 
 
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+
 
