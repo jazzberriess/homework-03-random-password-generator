@@ -3,15 +3,13 @@ var generateBtn = document.querySelector("#generate");
 
 //arrays for characters
 
-let upperCaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var upperCaseLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
-let lowerCaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var lowerCaseLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-let numbs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0,];
+var numbs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0,];
 
-let specialChars = ["!", "@", "#", "$", "$", "%", "^", "&", "*", "?", "~"];
-
-//defining vars
+var specialChars = ["!", "@", "#", "$", "$", "%", "^", "&", "*", "?", "~"];
 
 var passwordLength = [];
 var upper = "";
@@ -63,7 +61,7 @@ function generatePassword() {
 
     //IF USER SELECTS CANCEL/NO/FALSE FOR ALL FOUR PASSWORD CRITERIA, TELL THEM THEY NEED TO CHOOSE AT LEAST ONE AND RETURN THEM TO THE TOP OF THE GENERATE PASSWORD PROMPTS.
 
-    if (upper && lower && numbers && special === false) {
+    if (upper === false && lower && numbers && special === false) {
         var passwordLength = window.prompt("Please choose at least ONE (1) of the criteria: uppercase, lowercase, numbers, special characters.");
         generatePassword();
     } else {

@@ -11,13 +11,13 @@ var numbs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0,];
 
 var specialChars = ["!", "@", "#", "$", "$", "%", "^", "&", "*", "?", "~"];
 
-//defining lets for password criteria
+//defining vars for password criteria
 
-let upper = "";
-let lower = "";
-let numbers = "";
-let special = "";
-let passwordChars = [];
+var passwordLength = [];
+var upper = "";
+var lower = "";
+var numbers = "";
+var special = "";
 
 
 // let passwordLength = [];
@@ -27,7 +27,7 @@ function generatePassword() {
 
 
 
-    var passwordLength = [];
+    // var passwordLength = [];
 
     //ask the user to choose a password length between 1 and 128 characters
 
@@ -42,55 +42,71 @@ function generatePassword() {
 
     //uppercase prompt
 
-    let upper = window.confirm("Would you like to include uppercase characters?");
+    var upper = window.confirm("Would you like to include uppercase characters? OK for Yes, Cancel for No.");
+    console.log(upper);
 
 
     //lowercase prompt
 
-    let lower = window.confirm("Would you like to include lowercase characters?");
+    var lower = window.confirm("Would you like to include lowercase characters? OK for Yes, Cancel for No.");
+    console.log(lower);
 
     //numbers prompt
 
-    let numbers = window.confirm("Would you like to include numbers?");
+    var numbers = window.confirm("Would you like to include numbers? OK for Yes, Cancel for No.");
+    console.log(numbers);
 
     //special characters
 
-    let special = window.confirm("Would you like to include special characters?");
+    var special = window.confirm("Would you like to include special characters? OK for Yes, Cancel for No.");
+    console.log(special);
 
-    if (upper && lower && numbers && special === false) {
+    console.log(passwordLength);
+
+    //if user selects cancel/no for all four password criteria, tell them they need to choose at least one and return them to the top of the generate password prompts.
+
+    if (upper === false && lower === false && numbers === false && special === false) {
+
         alert("Please choose at least ONE (1) of the criteria: uppercase, lowercase, numbers and/or special characters");
 
         return generatePassword();
     }
 
+
     //depending on what options the user has selected as true, concat those character arrays into another array.
     //Big thank you to Italy S for posting a similar solution on stackoverflow. I was stuck for hours on this: https://stackoverflow.com/questions/69851109/js-password-generator-character-length-not-working
 
-    if
-        (upper === true)
-        passwordChars = passwordChars.concat(upperCaseLetters);
+    var passwordCharacters = [];
 
-    (lower === true)
-    passwordChars = passwordChars.concat(lowerCaseLetters);
+    if (upper === true)
+        passwordCharacters = passwordCharacters.concat(upperCaseLetters);
 
-    (numbers === true)
-    passwordChars = passwordChars.concat(numbs);
+    if (lower === true)
+        passwordCharacters = passwordCharacters.concat(lowerCaseLetters);
 
-    (special === true)
-    passwordChars = passwordChars.concat(specialChars);
+    if (numbers === true)
+        passwordCharacters = passwordCharacters.concat(numbs);
+
+    if (special === true)
+        passwordCharacters = passwordCharacters.concat(specialChars);
+
+    console.log(passwordCharacters);
 
 
-    //generate our password based on the password length that the user has chosen and select randomly from the passwordChars string
+    //generate our password based on the password length that the user has chosen and select randomly from the passwordChars array
 
 
     var password = "";
+
     for (var i = 0; i < passwordLength; i++); {
 
-        password += passwordChars[Math.floor(Math.random() * passwordChars.length)];
+        password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
 
+        console.log(passwordLength);
     }
 
     return (password);
+
 }
 
 // Write password to the #password input
