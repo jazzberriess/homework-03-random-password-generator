@@ -92,85 +92,114 @@ function generatePassword() {
 
 
     console.log(passwordCharacters);
-}
+    // }
 
-//generate a password based on the password length that the user has chosen and select randomly from the passwordCharacters array
+    //generate a password based on the password length that the user has chosen and select randomly from the passwordCharacters array
 
-//THIS WAY ISN'T AS SECURE BUT IT WORKS
+    //THIS WAY ISN'T AS SECURE BUT IT WORKS
 
-// var password = "";
+    // var password = "";
 
-// for (var i = 0; i < passwordLength; i++) {
+    // for (var i = 0; i < passwordLength; i++) {
 
-//     password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
-// }
-// //if the password result does not include any of the required categories, generate another.
+    //     password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+    // }
+    //if the password result does not include any of the required categories, generate another.
 
-// if (!password.includes(numbs) && !password.includes(specialChars) && !password.includes(upper) && !password.includes(lower)) {
+    // if (!password.includes(numbs) && !password.includes(specialChars) && !password.includes(upper) && !password.includes(lower)) {
 
-//     for (var i = 0; i < passwordLength.length; i++)
-//         password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+    //     for (var i = 0; i < passwordLength.length; i++) {
+    //         password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
 
-//     return password;
-// }
+    //         return password;
+    // }
+    // }
 
-// }
-
-
-
-
-
-
-//CAN PROBABLY DELETE THIS.
-
-
-// if (password != numbs || password != specialChars || password != upper || password != lower); {
-
-//     for (var i = 0; i < passwordLength; i++) {
-
-//         password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
-
-//         console.log(passwordLength);
-
-//     }
-// return (password);
-// }
-// }
-
-
-//     console.log(passwordLength);
-// }
-
-// return (password);
+    // }
 
 
 
 
 
-//TRYING TO MAKE IT MORE SECURE
 
-// var password = "";
-
-for (var i = passwordCharacters.length - 1; i > 0; i--) {
-    var password = Math.floor(Math.random() * (i + 1));
-    var temp = passwordLength[i];
-    passwordLength[i] = passwordCharacters[password];
-    passwordCharacters[password] = temp;
+    //CAN PROBABLY DELETE THIS.
 
 
+    // if (password != numbs || password != specialChars || password != upper || password != lower); {
 
-    password += passwordCharacters[index];
+    //     for (var i = 0; i < passwordLength; i++) {
 
-    console.log(password);
+    //         password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+
+    //         console.log(passwordLength);
+
+    //     }
+    // return (password);
+    // }
+    // }
+
+
+    //     console.log(passwordLength);
+    // }
 
     // return (password);
 
+
+
+
+
+    //TRYING TO MAKE IT MORE SECURE
+
+    // var password = "";
+
+    // for (var i = passwordCharacters.length - 1; i > 0; i--) {
+    //     var password = Math.floor(Math.random() * (i + 1));
+    //     var temp = passwordLength[i];
+    //     passwordLength[i] = passwordCharacters[password];
+    //     passwordCharacters[password] = temp;
+
+
+
+    //     password += passwordCharacters[index];
+
+    //     console.log(password);
+
+    //     return (password);
+
+    // }
+
+
+
+    // ATTEMPT NUMBER INFINITY at the whole making it more secure thing. Okay. So. This below code will generate a string based on the required password length, then shuffle that based on the principle of 
+
+
+    var randomPassword = Array(passwordLength);
+
+    randomPassword[0] = numbs;
+    randomPassword[1] = upperCaseLetters;
+    randomPassword[2] = lowerCaseLetters;
+    randomPassword[3] = specialChars;
+
+    randomPassword = randomPassword.fill(passwordCharacters, 4);
+
+    return shuffleArray(randomPassword.map(function (x) { return x[Math.floor(Math.random() * x.length)] })).join("");
+
+
 }
 
-// }
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
 
-// return (password);
-// }
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+
+    }
+
+    return array;
+}
+
 
 
 // Write password to the #password input
