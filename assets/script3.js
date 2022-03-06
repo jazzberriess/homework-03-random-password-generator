@@ -84,6 +84,7 @@ function generatePassword() {
     if (special === true)
         passwordCharacters = passwordCharacters.concat(specialChars);
 
+
     console.log(passwordCharacters);
 
 
@@ -91,11 +92,38 @@ function generatePassword() {
 
     //THIS WAY ISN'T AS SECURE BUT IT WORKS
 
-    // var password = "";
+    //     var password = "";
 
-    // for (var i = 0; i < passwordLength; i++) {
+    //     for (var i = 0; i < passwordLength; i++) {
 
-    //     password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+    //         password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+    //     }
+    //     //if the password result does not include any of the required categories, generate another.
+
+    //     if (!password.includes(numbs) || !password.includes(specialChars) || !password.includes(upper) || !password.includes(lower)) {
+
+    //         for (var i = 0; i < passwordLength.length; i++)
+    //             password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+
+    //     }
+    //     return (password);
+    // }
+
+    //CAN PROBABLY DELETE THIS.
+
+
+    // if (password != numbs || password != specialChars || password != upper || password != lower); {
+
+    //     for (var i = 0; i < passwordLength; i++) {
+
+    //         password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
+
+    //         console.log(passwordLength);
+
+    //     }
+    // return (password);
+    // }
+    // }
 
 
     //     console.log(passwordLength);
@@ -105,37 +133,44 @@ function generatePassword() {
 
     //TRYING TO MAKE IT MORE SECURE
 
-    // var shuffledPassword = new Uint32Array(passwordCharacters.length);
-    // window.crypto.getRandomValues(shuffledPassword);
-
-    // console.log("Here are the numbers");
-
     // var password = "";
 
-    // for (var i = 0; i < passwordLength; i++) {
+    // for (var i = passwordCharacters.length - 1; i > 0; i--) {
+    //     var index = Math.floor(Math.random() * (i + 1));
+    //     var temp = passwordCharacters[i];
+    //     passwordCharacters[i] = passwordCharacters[index];
+    //     passwordCharacters[index] = temp;
 
-    //     password += passwordCharacters[shuffledPassword[i] * passwordCharacters.length];
+    //     password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)]
 
-    //     console.log(passwordCharacters);
+    //     console.log(password);
+    //     }
+
+    //     return (password);
+
+
+
     // }
 
-    return (password);
+    // console.log(passwordCharacters);
 
-}
-
-
-// Write password to the #password input
-function writePassword() {
-    var password = generatePassword();
-    var passwordText = document.querySelector("#password");
-
-    passwordText.value = password;
-
-}
+    // return (password);
 
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+
+
+    // Write password to the #password input
+    function writePassword() {
+        var password = generatePassword();
+        var passwordText = document.querySelector("#password");
+
+        passwordText.value = password;
+
+    }
+
+
+    // Add event listener to generate button
+    generateBtn.addEventListener("click", writePassword);
 
 
 
