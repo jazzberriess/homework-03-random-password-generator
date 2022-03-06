@@ -20,18 +20,12 @@ var numbers = "";
 var special = "";
 
 
-// let passwordLength = [];
-
-
 function generatePassword() {
 
 
-
-    // var passwordLength = [];
-
     //ask the user to choose a password length between 1 and 128 characters
 
-    var passwordLength = parseInt(prompt("Please choose the length of your password between 8 and 128 characters"));
+    passwordLength = parseInt(prompt("Please choose the length of your password between 8 and 128 characters"));
 
     // if the password is not between 8 and 128 characters, or is not a numeric value, alert user that their option is invalid and take them back to the start
 
@@ -42,28 +36,28 @@ function generatePassword() {
 
     //uppercase prompt
 
-    var upper = window.confirm("Would you like to include uppercase characters? OK for Yes, Cancel for No.");
+    upper = window.confirm("Would you like to include uppercase characters? OK for Yes, Cancel for No.");
     console.log(upper);
 
 
     //lowercase prompt
 
-    var lower = window.confirm("Would you like to include lowercase characters? OK for Yes, Cancel for No.");
+    lower = window.confirm("Would you like to include lowercase characters? OK for Yes, Cancel for No.");
     console.log(lower);
 
     //numbers prompt
 
-    var numbers = window.confirm("Would you like to include numbers? OK for Yes, Cancel for No.");
+    numbers = window.confirm("Would you like to include numbers? OK for Yes, Cancel for No.");
     console.log(numbers);
 
     //special characters
 
-    var special = window.confirm("Would you like to include special characters? OK for Yes, Cancel for No.");
+    special = window.confirm("Would you like to include special characters? OK for Yes, Cancel for No.");
     console.log(special);
 
     console.log(passwordLength);
 
-    //if user selects cancel/no for all four password criteria, tell them they need to choose at least one and return them to the top of the generate password prompts.
+    //if user selects cancel/no for all four password criteria, tell them they need to choose at least one and return them to the top of the generate password prompts to choose again.
 
     if (upper === false && lower === false && numbers === false && special === false) {
 
@@ -93,12 +87,12 @@ function generatePassword() {
     console.log(passwordCharacters);
 
 
-    //generate our password based on the password length that the user has chosen and select randomly from the passwordChars array
+    //generate a password based on the password length that the user has chosen and select randomly from the passwordCharacters array
 
 
     var password = "";
 
-    for (var i = 0; i < passwordLength; i++); {
+    for (var i = 0; i < passwordLength; i++) {
 
         password += passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
 
