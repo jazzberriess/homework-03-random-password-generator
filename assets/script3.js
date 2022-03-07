@@ -103,9 +103,7 @@ function generatePassword() {
 
     //generate a password based on the password length that the user has chosen and select randomly from the passwordCharacters array
 
-    // Big big thank you to Ryan Shillington on Stack Overflow for providing this solution to a question someone else posted: https://stackoverflow.com/questions/9719570/generate-random-password-string-with-requirements-in-javascript/51540480#51540480
-
-    // Pretty sure I wouldn't have been able to do this without them
+    // Big big thank you to Ryan Shillington on Stack Overflow for providing this solution (lines 142 - 169) to a question someone else posted: https://stackoverflow.com/questions/9719570/generate-random-password-string-with-requirements-in-javascript/51540480#51540480. I've adapted it slightly to suit the way I'd created my passwordCharacter array, but I'm pretty sure I wouldn't have been able to do this without them
 
     // ATTEMPT NUMBER INFINITY at making the random generation more secure. Okay. So. This below code (and following function) will generate a string based on the required password length AND criteria, then shuffle that based on the principle of the Fisher-Yates (and Durstenfeld's more recent update to it) algorithm.
 
